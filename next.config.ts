@@ -14,6 +14,7 @@ const nextConfig: NextConfig = {
     output: "export",
     distDir: "out",
     basePath: "/Daily-Catch-Auth",
+    assetPrefix: "/Daily-Catch-Auth/",
     images: {
         unoptimized: true,
     }
