@@ -10,6 +10,13 @@ const nextConfig: NextConfig = {
             },
         ];
     },
+
+    output: "export",
+    distDir: "out",
+    basePath: "/Daily-Catch-Auth",
+    images: {
+        unoptimized: true,
+    }
 };
 
 export default nextConfig;
