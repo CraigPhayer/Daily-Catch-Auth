@@ -9,24 +9,15 @@ const nextConfig: NextConfig = {
         unoptimized: true,
     },
 
-    async redirects() {
-        return [
-            {
-                source: '/',              // Redirect from the root route
-                destination: '/login',    // Redirect to /login
-                permanent: true,          // Permanent redirect (HTTP status 308)
-            },
-        ];
-    },
-    async rewrites() {
-        return [
-            {
-                source: '/',
-                destination: '/login.html', // Ensures GitHub Pages serves login.html as the default
-            },
-        ];
-    },
-
+    // async redirects() {
+    //     return [
+    //         {
+    //             source: '/',              // Redirect from the root route
+    //             destination: '/login',    // Redirect to /login
+    //             permanent: true,          // Permanent redirect (HTTP status 308)
+    //         },
+    //     ];
+    // },
 };
 
 export default nextConfig;
