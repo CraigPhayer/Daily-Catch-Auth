@@ -18,6 +18,14 @@ const nextConfig: NextConfig = {
             },
         ];
     },
+    async rewrites() {
+        return [
+            {
+                source: '/',
+                destination: '/login.html', // Ensures GitHub Pages serves login.html as the default
+            },
+        ];
+    },
 
 };
 
