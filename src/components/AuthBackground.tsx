@@ -4,7 +4,7 @@ export default function Background() {
     return (
         <div className="hidden md:flex w-1/2 relative">
             <Image
-                src="/loginbackground.png"
+                src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/loginbackground.png`}
                 alt="Background"
                 layout="fill"
                 objectFit="cover"
