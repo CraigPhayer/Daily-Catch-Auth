@@ -10,7 +10,7 @@ export default function Background() {
                 objectFit="cover"
             />
             <div className="absolute inset-0 bg-black bg-opacity-30 flex flex-col justify-center items-center text-white">
-                <Image src="/logo1.svg" alt="Main Logo" width={320} height={320} />
+                <Image src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/logo1.svg`} alt="Main Logo" width={320} height={320} />
             </div>
         </div>
     );
