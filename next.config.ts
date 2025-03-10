@@ -6,7 +6,7 @@ const nextConfig = {
     output: "export",
     distDir: "out",
     basePath: (env == "production") ? "/Daily-Catch-Auth" : "",
-    assetPrefix: (env == "production") ? "/Daily-Catch-Auth" : "",
+    assetPrefix: (env == "production") ? "/Daily-Catch-Auth/" : "",
     images: { unoptimized: true }
 };
 
