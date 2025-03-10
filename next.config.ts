@@ -7,7 +7,7 @@ const nextConfig = {
     distDir: "out",
     basePath: (env == "production") ? "/Daily-Catch-Auth" : "",
     assetPrefix: (env == "production") ? "/Daily-Catch-Auth/" : "",
-    images: { unoptimized: true }
+    images: { unoptimized: false }
 };
 
 export default nextConfig;
