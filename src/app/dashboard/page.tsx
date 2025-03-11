@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import {RootState} from "@/store/store";
 import {logout} from "@/store/authSlice";
 import {useEffect} from "react";
+import {ROUTES} from "@/constrants/routes";
 
 export default function Dashboard() {
     const user = useSelector((state: RootState) => state.auth.user);
@@ -13,13 +14,13 @@ export default function Dashboard() {
 
     useEffect(() => {
         if (!user) {
-            router.push("/login");
+            router.push(ROUTES.LOGIN);
         }
     }, [user, router]);
 
     const handleLogout = async () => {
         dispatch(logout());
-        router.push("/login");
+        router.push(ROUTES.LOGIN);
     };
 
     if (!user) {

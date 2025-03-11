@@ -7,6 +7,7 @@ import {registerUser} from "@/lib/auth";
 import Background from "@/components/AuthBackground";
 import {login} from "@/store/authSlice";
 import {useDispatch} from "react-redux";
+import {ROUTES} from "@/constrants/routes";
 
 export default function SignUp() {
     const router = useRouter();
@@ -16,7 +17,7 @@ export default function SignUp() {
         try {
             await registerUser(email, password);
             dispatch(login(email));
-            router.push("/dashboard");
+            router.push(ROUTES.DASHBOARD);
         } catch (error: unknown) {
             if (error instanceof Error){
                 alert(error.message);
@@ -36,7 +37,7 @@ export default function SignUp() {
                 onSubmit={handleSignup}
                 linkQuestion="Already have an account?"
                 linkText="Login"
-                linkHref="/login"
+                linkHref={ROUTES.LOGIN}
             />
         </div>
     );
