@@ -5,13 +5,23 @@ import { useRouter } from "next/navigation";
 import AuthForm from "@/components/AuthForm";
 import {registerUser} from "@/lib/auth";
 import Background from "@/components/AuthBackground";
+import {login} from "@/store/authSlice";
+import {useDispatch} from "react-redux";
 
 export default function SignUp() {
     const router = useRouter();
+    const dispatch = useDispatch();
 
     const handleSignup = async (email: string, password: string) => {
-        await registerUser(email, password);
-        router.push("/dashboard");
+        try {
+            await registerUser(email, password);
+            dispatch(login(email));
+            router.push("/dashboard");
+        } catch (error: unknown) {
+            if (error instanceof Error){
+                alert(error.message);
+            }
+        }
     };
     return (
         <div className="flex h-screen">

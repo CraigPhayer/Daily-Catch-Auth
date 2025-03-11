@@ -5,13 +5,23 @@ import { useRouter } from "next/navigation";
 import AuthForm from "@/components/AuthForm";
 import {loginUser} from "@/lib/auth";
 import Background from "@/components/AuthBackground";
+import {login} from "@/store/authSlice";
+import { useDispatch } from "react-redux";
 
 export default function Login() {
     const router = useRouter();
+    const dispatch = useDispatch();
 
     const handleLogin = async (email: string, password: string) => {
-        await loginUser(email, password);
-        router.push("/dashboard");
+        try {
+            await loginUser(email, password);
+            dispatch(login(email));
+            router.push("/dashboard");
+        } catch (error: unknown) {
+            if (error instanceof Error){
+                alert(error.message);
+            }
+        }
     };
 
     return (
