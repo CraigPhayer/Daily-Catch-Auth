@@ -66,7 +66,7 @@ export default function AuthForm({
                 </form>
 
                 <p className="mt-4 text-primary">
-                    {linkQuestion} <a onClick={onClick} className="text-primary hover:underline">{linkText}</a>
+                    {linkQuestion} <a onClick={onClick} className="text-primary hover:underline cursor-pointer">{linkText}</a>
                 </p>
             </div>
         </div>
