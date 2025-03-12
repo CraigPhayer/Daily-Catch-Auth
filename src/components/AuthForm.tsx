@@ -3,6 +3,7 @@
 import React, {useState} from "react";
 import Image from "next/image";
 import InputField from "@/components/InputFields";
+import {useRouter} from "next/navigation";
 
 interface AuthFormProps {
     title: string;
@@ -26,6 +27,7 @@ export default function AuthForm({
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState<string | null>(null);
+    const router = useRouter();
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -37,6 +39,10 @@ export default function AuthForm({
             }
         }
     };
+
+    const onClick = () => {
+        router.push(linkHref);
+    }
 
     return (
         <div className="w-full md:w-1/2 flex flex-col justify-center items-center px-8 bg-white">
@@ -60,7 +66,7 @@ export default function AuthForm({
                 </form>
 
                 <p className="mt-4 text-primary">
-                    {linkQuestion} <a href={linkHref} className="text-primary hover:underline">{linkText}</a>
+                    {linkQuestion} <a onClick={onClick} className="text-primary hover:underline">{linkText}</a>
                 </p>
             </div>
         </div>
