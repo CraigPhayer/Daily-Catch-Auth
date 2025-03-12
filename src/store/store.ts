@@ -14,7 +14,7 @@ const persistedReducer = persistReducer(persistConfig, authReducer); // Wrap aut
 
 export const store = configureStore({
     reducer: {
-        auth: authReducer, // handles auth state
+        auth: persistedReducer, // handles auth state
     },
 });
 
