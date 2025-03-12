@@ -1,9 +1,11 @@
 "use client";
 
-import React, {useState} from "react";
+import React from "react";
 import Image from "next/image";
 import InputField from "@/components/InputFields";
 import {useRouter} from "next/navigation";
+import {useDispatch, useSelector} from "react-redux";
+import {selectAuth, setEmail, setError, setPassword} from "@/store/authSlice";
 
 interface AuthFormProps {
     title: string;
@@ -24,9 +26,12 @@ export default function AuthForm({
                                      linkHref,
                                      linkQuestion
                                  }: AuthFormProps) {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [error, setError] = useState<string | null>(null);
+    // const [email, setEmail] = useState("");
+    // const [password, setPassword] = useState("");
+    // const [error, setError] = useState<string | null>(null);
+
+    const dispatch = useDispatch();
+    const { email, password, error } = useSelector(selectAuth);
     const router = useRouter();
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -55,9 +60,9 @@ export default function AuthForm({
 
                 <form onSubmit={handleSubmit} className="w-full max-w-sm">
                     <InputField type="email" placeholder="Email" value={email}
-                                onChange={(e) => setEmail(e.target.value)} iconSrc={"./email.svg"}/>
+                                onChange={(e) => dispatch(setEmail(e.target.value))} iconSrc={"./email.svg"}/>
                     <InputField type="password" placeholder="Password" value={password}
-                                onChange={(e) => setPassword(e.target.value)} iconSrc={"./password.svg"}/>
+                                onChange={(e) => dispatch(setPassword(e.target.value))} iconSrc={"./password.svg"}/>
 
                     <button type="submit"
                             className="w-full bg-primary text-white p-3 rounded-lg hover:bg-secondary transition">
